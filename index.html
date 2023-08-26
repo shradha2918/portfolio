@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>portfolio website</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/25db963c80.js" crossorigin="anonymous"></script>
 </head>
 <script src="script.js"></script>
 <body>
@@ -13,15 +14,16 @@
     </div>-->
 
        
-    <div class="container">
+    <div class="container" id = "header">
         <nav>
             <img src="icon.png" class ="logo">
             <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">about</a></li>
-                <li><a href="#">services</a></li>
-                <li><a href="#">portfolio</a></li>
-                <li><a href="#">contact</a></li>
+                <li><a href="#header">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#service">Services</a></li>
+                <li><a href="#technology">Technology</a></li>
+                <li><a href="#contact">Contact</a></li>
+                
             </ul>
         </nav>
         <div class="header-text">
@@ -85,7 +87,7 @@
     </div>
     <!-----------------------------------------sevices--------------------------------------->
 <div id="service">
-    <div class="container">
+    <div class="contain">
         <h1 class="sub-title">My Services</h1>
         <div class="services-list">
             <div>
@@ -111,6 +113,91 @@
             </div>
         </div>
     </div>
-</div>
+    </div>
+    <!---------------Technology----------------->
+    <div id="technology">
+        <div class="contain">
+            <h1 class="sub-title">Technologies</h1>
+            <div class="work-list">
+                <div class="work wb">
+                    <img src = "web.png">
+                    <div class="layer">
+                        <h3> Web Languages</h3>
+                        <p>
+                            HTML<br>CSS<br>JS<br>REACT<br>
+                        </p>
+                    </div>
+                </div>
+                <div class="work">
+                    <img src = "program.webp">
+                    <div class="layer">
+                        <h3> Code Languages</h3>
+                        <p>
+                            C++<br>JAVA<br>NODEJS<br>
+                        </p>
+                    </div>
+                </div>
+                <div class="work gt">
+                    <img src = "git.png">
+                    <div class="layer">
+                        <h3>Version Control</h3>
+                        <p>
+                            Git<br>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+
+        </div>
+
+    </div>
+    <!---------------------------contact--------------------------->
+    <div id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="contact-left">
+                    <h1 class = "sub-title"> Contact Me</h1>
+                    <p><i class="fa-solid fa-envelope"></i>shradhaagarwal2001@gmail.com</p>
+                    <p><i class="fa-solid fa-phone"></i>9045332697</p>
+                    <div class="social-icons">
+                        <a href="https://www.linkedin.com/in/shradha-agarwal-203b1b197/"><i class="fa-brands fa-linkedin"></i></a>
+                        <a href=""><i class="fa-brands fa-twitter"></i></a>
+                    </div>
+                    <a href="resume.pdf" download class="btn btn2">Download CV</a>
+                </div>
+                    <div class="contact-right">
+                        <form name="submit-to-google-sheet">
+                            <input type="text" name="Name" placeholder="your name">
+                            <input type="email" name="email" placeholder="your email">
+                            <textarea name="message"  rows="6" placeholder="your message"></textarea>
+                            <button type="submit" class="btn btn2">Submit</button>
+                        </form>
+                        <span id="msg"> </span>
+
+                    </div> 
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbwQWKf-uR6tJiGNdqTIw7fjetCqJxiHUDX9NU7KTCJxamPidW2W3aLSzdJmK3L54WBL1A/exec'
+        const form = document.forms['submit-to-google-sheet']
+        const msg = document.getElementById("msg")
+      
+        form.addEventListener('submit', e => {
+          e.preventDefault()
+          fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+            .then(response => {
+                msg.innerHTML = "message sent successfully"
+                setTimeout(function(){
+                    msg.innerHTML = ""
+                },5000)
+                form.reset()
+            })
+            .catch(error => console.error('Error!', error.message))
+        })
+      </script>
 </body>
 </html>
